@@ -4,9 +4,8 @@ import sys
 
 def portScanner():
     hostIP, maxPort = getHostIpAndMaxPort()
+    printHostIpAndPortRange(hostIP, maxPort)
 
-    print("Host IP: " + str(hostIP))
-    print("Ports range: (0 - " + str(maxPort) + ")")
 
     for port in range(1,1024):
         try:
@@ -35,6 +34,10 @@ def getHostIPFromArgv():
 def getmaxPortnFromArgv():
     return(sys.argv[1])
 
+
+def printHostIpAndPortRange(hostIP, maxPort):
+    print("Host IP: " + str(hostIP))
+    print("Ports range: (0 - " + str(maxPort) + ")")
 
 
 portScanner()
