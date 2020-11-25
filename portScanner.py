@@ -1,3 +1,6 @@
+#TODO: multithreading
+#TODO: writing open ports and hostIp to file
+
 import socket
 import sys
 
