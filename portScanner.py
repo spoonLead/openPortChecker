@@ -36,13 +36,16 @@ def printHostIpAndPortRange():
 
 
 def scanPorts():
+    print("\nScanning in progress")
+    print("Open TCP ports:")
     for port in range(1,MAX_PORT):
         try:
-            s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            s.settimeout(1000)
-            s.connect((HOST_IP, port))
+            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            sock.settimeout(1000)
+            sock.connect((HOST_IP, port))
             print(port)
-            s.close
+            sock.close
         except: continue
+    print("The scan is complete")
 
 portScanner()
