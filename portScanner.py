@@ -17,7 +17,7 @@ def getHostIpAndMaxPort():
     if(getArgvLength() >= 2):
         hostIP = getHostIPFromArgv()
     if(getArgvLength() >= 3):
-        maxPort = getmaxPortnFromArgv()
+        maxPort = getMaxPortFromArgv()
     return(hostIP,maxPort)
 
 def getArgvLength():
@@ -26,8 +26,8 @@ def getArgvLength():
 def getHostIPFromArgv():
     return(sys.argv[1])
 
-def getmaxPortnFromArgv():
-    return(sys.argv[1])
+def getMaxPortFromArgv():
+    return(int(sys.argv[2]))
 
 
 def printHostIpAndPortRange():
