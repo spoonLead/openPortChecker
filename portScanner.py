@@ -3,18 +3,13 @@ import sys
 
 
 def portScanner():
-    hostIP, maxPort = getHostIpAndMaxPort()
-    printHostIpAndPortRange(hostIP, maxPort)
+    global HOST_IP
+    global MAX_PORT
 
+    HOST_IP, MAX_PORT = getHostIpAndMaxPort()
+    printHostIpAndPortRange()
+    scanPorts()
 
-    for port in range(1,1024):
-        try:
-            s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            s.settimeout(1000)
-            s.connect(('127.0.0.1', port))
-            print(port)
-            s.close
-        except: continue
 
 def getHostIpAndMaxPort():
     hostIP = '127.0.0.1'
@@ -35,9 +30,19 @@ def getmaxPortnFromArgv():
     return(sys.argv[1])
 
 
-def printHostIpAndPortRange(hostIP, maxPort):
-    print("Host IP: " + str(hostIP))
-    print("Ports range: (0 - " + str(maxPort) + ")")
+def printHostIpAndPortRange():
+    print("Host IP: " + str(HOST_IP))
+    print("Ports range: (0 - " + str(MAX_PORT) + ")")
 
+
+def scanPorts():
+    for port in range(1,1024):
+        try:
+            s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            s.settimeout(1000)
+            s.connect(('127.0.0.1', port))
+            print(port)
+            s.close
+        except: continue
 
 portScanner()
