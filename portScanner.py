@@ -41,9 +41,8 @@ def scanPorts():
     for port in range(1,MAX_PORT):
         try:
             sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            sock.settimeout(1000)
             sock.connect((HOST_IP, port))
-            print(port)
+            print("Открытый порт: " + str(port))
             sock.close
         except: continue
     print("The scan is complete")
